@@ -1,0 +1,25 @@
+<!-- content layed our vertically (angular flex layout) -->
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex>
+        <div>
+            <h3>Menu</h3>
+            <hr />
+        </div>
+    </div>
+
+    <div fxFlex>
+        <mat-grid-list cols="2" rowHeight="200px"> 
+            <!-- the dish that's passed in the event click is the dish of the loop -->
+            <mat-grid-tile *ngFor="let dish of dishes" (click)='onSelect(dish)'>
+                <img height="200px" src={{dish.image}} alt={{dish.name}} />
+                <mat-grid-tile-footer>
+                    <!-- Angular Uppercase pipe, turns the names uppercase -->
+                    <h1 matLine>{{dish.name | uppercase}}</h1>
+                </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <!-- we pass the selected dish as a dish property to the dishdetail component (similar to passing props in react) -->
+    <app-dishdetail [dish] = 'selectedDish'></app-dishdetail>
+</div>

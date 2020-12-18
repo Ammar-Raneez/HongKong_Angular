@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+//angular prebuilt themes which gives us a primary, accent and warning color
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//importing the files for font-awesome
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome';
+
+//resets
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.container {
+    margin: 20px;
+    display: flex;
+}

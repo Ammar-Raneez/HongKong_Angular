@@ -28,6 +28,7 @@ export class MenuComponent implements OnInit {
   //we can use this to initialize our dishes variable using the DishService class that we got access to via the 
   //constructor after importing
   ngOnInit(): void {
-    this.dishes = this.dishService.getDishes();
+    this.dishService.getDishes()
+      .then(dishes => this.dishes = dishes)
   }
 }

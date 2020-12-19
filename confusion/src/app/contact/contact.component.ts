@@ -23,6 +23,7 @@ export class ContactComponent implements OnInit {
 
   createForm() {
     this.feedbackForm = this.fb.group({
+      //follows the Feedback datatype, w validations
       firstname: ['', Validators.required ],
       lastname: ['', Validators.required ],
       telnum: ['', Validators.required ],

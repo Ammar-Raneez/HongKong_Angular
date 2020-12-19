@@ -82,6 +82,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     ProcessHTTPMsgService,
     { provide: 'BaseURL', useValue: baseURL }
   ],
+  //when we wanna use a component within another  (overlaying dialog on menu)
+  //This is needed
   entryComponents: [
     LoginComponent
   ],

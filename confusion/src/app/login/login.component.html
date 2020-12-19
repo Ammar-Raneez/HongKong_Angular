@@ -6,10 +6,12 @@
 
 <p>{{ user | json }}</p>
 
+<!-- specifying novalidate informs angular to take control over validation, overruling the default html one -->
 <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
         <p>
         <mat-form-field>
+            <!-- #username is a template reference form within ngModel, so mat-error can reference this -->
             <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username" #username="ngModel" required>
             <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
         </mat-form-field>

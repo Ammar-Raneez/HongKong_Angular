@@ -21,5 +21,6 @@
     </div>
 
     <!-- we pass the selected dish as a dish property to the dishdetail component (similar to passing props in react) -->
-    <app-dishdetail [dish] = 'selectedDish'></app-dishdetail>
+    <!-- <app-dishdetail [dish] = 'selectedDish'></app-dishdetail> -->
+    <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]"></mat-grid-tile>
 </div>

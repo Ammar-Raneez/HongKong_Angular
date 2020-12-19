@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DishService } from '../services/dish.service';
 import { Dish } from '../shared/dish';
 
 @Component({
@@ -7,14 +10,16 @@ import { Dish } from '../shared/dish';
   styleUrls: ['./dishdetail.component.scss']
 })
 export class DishdetailComponent implements OnInit {
-  //Do not use the Dish type from the dish.ts file to declare either the const DISH or the variable dish below to be of the type Dish. 
-  //We need to update the Dish type which will be done in the next module.
-  //*What is in the class is what is accessible in the html template
-  @Input()
-  dish = Dish;
-  constructor() { }
+  dish: Dish;
 
-  ngOnInit(): void {
+  constructor(private dishservice: DishService, private route: ActivatedRoute, private location: Location) { }
+
+  ngOnInit() {
+    const id = +this.route.snapshot.params['id'];
+    this.dish = this.dishservice.getDish("" + id);
   }
 
+  goBack(): void {
+    this.location.back();
+  }
 }

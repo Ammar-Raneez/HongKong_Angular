@@ -1,6 +1,9 @@
 <div class="container" fxLayout="row wrap" fxLayout.sm="column" fxLayout.xs="column" 
   fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0"
 >
+  <div fxFlex [hidden]="dish || errMess">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please wait</h4>
+  </div>
     <div fxFlex="40" *ngIf="dish" [@visibility]="visibility"  [@expand]>
       <mat-card>
         <mat-card-header>

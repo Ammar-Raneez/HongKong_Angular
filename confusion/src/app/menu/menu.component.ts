@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../shared/dish';
+import { expand, flyInOut } from '../animations/app.animations';
 
 //importing things directly isn't ideal, the ideal way is to use a service to solely fetch our data, as such
 //what we're basically doing is separating concerns
@@ -10,9 +11,19 @@ import { baseURL } from '../shared/baseurl';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
-export class MenuComponent implements OnInit {
+
+export class MenuComponent implements OnInit { 
   dishes: Dish[];
   errMess: string;
 

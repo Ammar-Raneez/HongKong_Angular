@@ -35,6 +35,7 @@ export class DishdetailComponent implements OnInit {
   comment: Comment;
   dishcopy: Dish;
   visibility = 'shown';
+  comments: Comment[];
 
   formErrors = {
     'author': '',
@@ -63,6 +64,14 @@ export class DishdetailComponent implements OnInit {
         .pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(params['id']); }))
         .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown'; },
         errMess => this.errMess = <any>errMess);
+
+    if(this.dish) {
+      this.setComments();
+    }
+  }
+
+  setComments() {
+    this.comments = this.dish.comments;
   }
 
   setPrevNext(dishIds: string) {

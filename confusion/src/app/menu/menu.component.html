@@ -12,7 +12,7 @@
             <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
             <mat-grid-list cols="2" rowHeight="200px"> 
                 <!-- the dish that's passed in the event click is the dish of the loop -->
-                <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
+                <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight>
                     <img height="200px" src="{{ getBaseUrl() + dish.image }}" alt={{dish.name}}>
                     <mat-grid-tile-footer>
                         <!-- Angular Uppercase pipe, turns the names uppercase -->

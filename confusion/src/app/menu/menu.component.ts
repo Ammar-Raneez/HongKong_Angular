@@ -4,6 +4,7 @@ import { Dish } from '../shared/dish';
 //importing things directly isn't ideal, the ideal way is to use a service to solely fetch our data, as such
 //what we're basically doing is separating concerns
 import { DishService } from '../services/dish.service' 
+import { baseURL } from '../shared/baseurl';
 
 //typescript syntax -> variable: variable type = data
 @Component({
@@ -12,14 +13,7 @@ import { DishService } from '../services/dish.service'
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  dishes: Dish[]
-
-  selectedDish: Dish;
-
-  //the selected dish on the template file is assigned to the selectedDish variable
-  onSelect(dish: Dish) {
-    this.selectedDish = dish;
-  }
+  dishes: Dish[];
 
   //(get access to the DishService class upon import)
   constructor(private dishService: DishService) { }
@@ -30,5 +24,9 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.dishService.getDishes()
       .subscribe(dishes => this.dishes = dishes)
+  }
+
+  getBaseUrl() {
+    return baseURL;
   }
 }

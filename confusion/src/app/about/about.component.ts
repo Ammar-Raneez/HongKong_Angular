@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
 import { flyInOut, expand } from '../animations/app.animations';
+import { baseURL } from '../shared/baseurl';
 
 @Component({
   selector: 'app-about',
@@ -27,4 +28,7 @@ export class AboutComponent implements OnInit {
     .subscribe(leaders => this.leaders = leaders);
   }
 
+  getBaseUrl() {
+    return baseURL;
+  }
 }

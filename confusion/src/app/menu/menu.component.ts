@@ -24,7 +24,7 @@ import { baseURL } from '../shared/baseurl';
 })
 
 export class MenuComponent implements OnInit { 
-  dishes: Dish[];
+  dishes: Dish[] = [];
   errMess: string;
 
   //(get access to the DishService class upon import)
@@ -35,7 +35,10 @@ export class MenuComponent implements OnInit {
   //constructor after importing
   ngOnInit(): void {
     this.dishService.getDishes()
-      .subscribe(dishes => this.dishes = dishes,
+      .subscribe(
+        dishes => {
+          this.dishes = dishes
+        },
         err => this.errMess = <any>err
       )
   }

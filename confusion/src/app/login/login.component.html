@@ -4,23 +4,25 @@
     <button mat-button mat-dialog-close>&times;</button>
 </mat-toolbar>
 
-<p>{{ user | json }}</p>
+<!-- <p>{{ user | json }}</p> -->
 
 <!-- specifying novalidate informs angular to take control over validation, overruling the default html one -->
 <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
         <p>
-        <mat-form-field>
-            <!-- #username is a template reference form within ngModel, so mat-error can reference this -->
-            <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username" #username="ngModel" required>
-            <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
-            <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
-        </mat-form-field>
-        <mat-checkbox [(ngModel)]="user.remember" name="remember">Remember Me</mat-checkbox>
+            <mat-form-field>
+                <!-- #username is a template reference form within ngModel, so mat-error can reference this -->
+                <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username" #username="ngModel" required>
+                <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+            </mat-form-field>
         </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+        </p>
+        <mat-checkbox [(ngModel)]="user.remember" name="remember">Remember Me</mat-checkbox>
     </mat-dialog-content>
     <mat-dialog-actions>
         <span class="flex-spacer"></span>
